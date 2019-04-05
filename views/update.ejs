@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Agenda - Actualizar</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>Agenda</h1>
+    <%
+    console.log(error);
+    if(user == undefined){
+        var user = '';
+        user.nombre='';
+        user.apellido='';
+        user.direccion='';
+        user.numero='';
+        }
+    %>
+    <form action="/update/<%=user._id%>" method="post">
+        <label for="nombre">Nombre</label>
+        <input name="nombre" id="nombre" value="<%=user.nombre%>" required>
+        <label for="apellido">Apellido</label>
+        <input name="apellido" id="apellido" value="<%=user.apellido%>">
+        <label for="direccion">Email</label>
+        <input name="direccion" id="direccion" type="email" value="<%=user.direccion%>">
+        <label for="numero">numero</label>
+        <input name="numero" id="numero" value="<%=user.numero%>" required>
+        <label for="tipo">tipo</label>
+        <select name="tipo" id="tipo">
+            <option value="movil">movil</option>
+            <option value="casa">casa</option>
+            <option value="oficina">oficina</option>
+            <option value="otro">otro</option>
+        </select>
+        <input type="submit" value="Save">
+    </form>
+    <br />
+    <form action="/delete/<%=user._id%>"" method="post">
+        <input class="danger" type="submit" value="Delete" onclick="return confirm('Estas seguro?');">
+    </form>
+    <% if (error !== '') { %>
+        <div class="flash"><%=error%></div> 
+      <% } %>
+</body>

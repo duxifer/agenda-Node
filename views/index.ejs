@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Agenda</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>Agenda</h1>
+  <form action="/add" method="post">
+    <%
+        console.log(error);
+      if(user == undefined){
+        var user = '';
+        user.nombre='';
+        user.apellido='';
+        user.direccion='';
+        user.numero='';
+      }
+    %>
+    <label for="nombre">Nombre</label>
+    <input name="nombre" id="nombre" value="<%= user.nombre %>" required>
+    <label for="apellido">Apellido</label>
+    <input name="apellido" id="apellido" value="<%= user.apellido %>">
+    <label for="direccion">Email</label>
+    <input name="direccion" id="direccion" type="email" value="<%= user.direccion %>">
+    <label for="numero">numero</label>
+    <input name="numero" id="numero" value="<%= user.numero %>" required>
+    <label for="tipo">tipo</label>
+    <select name="tipo" id="tipo">
+      <option value="movil">movil</option>
+      <option value="casa">casa</option>
+      <option value="oficina">oficina</option>
+      <option value="otro">otro</option>
+    </select>
+    <input type="submit" value="Save">
+  </form>
+  <br />
+  <% if (error !== '') { %>
+    <div class="flash"><%=error%></div> 
+  <% } %>
+
+  <table style="width:100%">
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Numero</th>
+      <th>Tipo</th>
+      <th>Acciones</th>
+    </tr>
+    <% userlist.forEach(function(user){ %>
+    <tr>
+      <td><%= user.nombre %></td>
+      <td><%= user.apellido %></td>
+      <td><%= user.direccion %></td>
+      <td><%= user.numero %></td>
+      <td><%= user.tipo %></td>
+      <td><a class="action" href="/update/<%= user._id %>">Actualizar</a>
+      </td>
+    </tr>
+    <% }); %>
+  </table>
+</body>
+
+</html>
+<!doctype html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>User List</h1>
+    <ul>
+        <% userlist.forEach(function(user){ %>
+            <li><a href="numero:<%= user.numero %>" ><%= user.nombre %></a></li>
+        <% }); %>
+    </ul>
+</body>
+
+</html>
